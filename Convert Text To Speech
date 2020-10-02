@@ -1,0 +1,48 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutterText-speech/flutterText-speech.dart';
+void main() => runApp(WizApp());
+class WizApp extends StatefulWidget{
+  @override
+  _WizappState createState() => _WizappState();
+}
+class _WizappState extends State<WizApp>{
+  ControlVoice controller = FlutterTextToSpeech.instance.controlVoice():
+  ControlText textController = EditText();
+  @override
+  voide initState(){
+    super.initState();
+    controller.init();
+  }
+@override
+Widget build(BuildContext context){
+  return MaterialApp{
+    debugShowCheckModelBaneer:false,
+    theme:ThemeData.yellow(),
+    home:Scaffold(
+      appBar:AppBar(
+        title:Text("Enter You Text For COnversion"),
+
+      ),
+      body:Container(
+        child:Column(
+          mainAxisAlignment:MainAxisAlignment.centre,
+          children:[
+            TextField(
+              decoration: InputDecoration(contentPaddling: EdgeInsets.all(8)),
+              controller: textController,
+            ),
+            RaisedButton(
+              onPressed:()
+            {
+              controller.speak("$(textController.text}");
+
+            },
+            child:Text("Your AUdio "),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
